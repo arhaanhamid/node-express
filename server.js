@@ -4,7 +4,7 @@
  * ***************************************************/
 
 const bGround = require("fcc-express-bground");
-const myApp = require("./myApp").default;
+const myApp = require("./myApp").default.default;
 const express = require("express");
 const app = express();
 
