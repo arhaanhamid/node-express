@@ -39,7 +39,7 @@ app.get(
     next();
   },
   function (req, res) {
-    res.send(req.time);
+    res.send({ time: +req.time });
   }
 );
 
