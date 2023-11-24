@@ -32,6 +32,7 @@ app.get("/json", function (req, res) {
   res.json(data);
 });
 
+//api route on "/now" and using middleware chainings to get current time
 app.get(
   "/now",
   function (req, res, next) {
@@ -43,8 +44,16 @@ app.get(
   }
 );
 
+//api route to using params
 app.get("/:word/echo", function (req, res) {
   res.send({ echo: req.params.word });
 });
+
+app
+  .route("/name")
+  .get(function (req, res) {
+    res.send({ name: req.query.firstname + " " + req.query.lastname });
+  })
+  .post(function (req, res) {});
 
 module.exports = app;
