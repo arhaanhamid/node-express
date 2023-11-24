@@ -16,14 +16,15 @@ app.use("/public", express.static(__dirname + "/public"));
 
 app.get("/json", function (req, res) {
   let data = { message: "Hello json" };
-  if (process.env.MESSAGE_STYLE === "uppercase") {
-    data.message = data.message.toUpperCase();
-  }
-  // process.env.MESSAGE_STYLE === "uppercase"
-  //   ? (data.message = data.message.toUpperCase())
-  //   : "";
-
+  process.env.MESSAGE_STYLE === "uppercase"
+    ? (data.message = data.message.toUpperCase())
+    : "";
   res.json(data);
+});
+
+app.use(function (req, res, next) {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
 });
 
 module.exports = app;
