@@ -5,6 +5,7 @@ let bodyParser = require("body-parser");
 
 console.log("Hello World");
 
+//using bodyParser middleware to decode post requests
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //middleware function using request, response and next()
@@ -57,6 +58,8 @@ app
   .get(function (req, res) {
     res.send({ name: req.query.first + " " + req.query.last });
   })
-  .post(function (req, res) {});
+  .post(function (req, res) {
+    res.send({ name: req.body.first + " " + req.body.last });
+  });
 
 module.exports = app;
